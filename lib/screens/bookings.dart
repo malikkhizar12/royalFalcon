@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:royal_falcon_limousine/colors.dart';
-import 'package:royal_falcon_limousine/controllers/booking_list_controller.dart';
-import 'package:royal_falcon_limousine/widgets/searchbar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../screens/booking_form.dart';
-
 import '../widgets/appbar.dart';
+import '../widgets/searchbar.dart';
+import 'package:royal_falcon_limousine/colors.dart';
+import 'package:royal_falcon_limousine/controllers/booking_list_controller.dart';
 
 class BookingsList extends StatelessWidget {
-  const BookingsList({super.key});
+  const BookingsList({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +17,17 @@ class BookingsList extends StatelessWidget {
     Get.put(BookingListController());
     return Scaffold(
       backgroundColor: backgroundColor,
-      // appBar: const CustomAppBar(title: 'Booking'),
       body: GetBuilder<BookingListController>(
         builder: (controller) {
-          if (controller.isLoading.value==true) {
+          if (controller.isLoading.value == true) {
             return Center(
-              child: CircularProgressIndicator(color: Color(0xFFCF9D2C),),
+              child: CircularProgressIndicator(
+                color: Color(0xFFCF9D2C),
+              ),
             );
           } else {
             return Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
                   Container(
@@ -38,7 +38,7 @@ class BookingsList extends StatelessWidget {
                   const ElevatedSearchBar(),
                   Expanded(
                     child: GridView.count(
-                      crossAxisCount: 2,
+                      crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 28,
                       padding: const EdgeInsets.all(12),
@@ -56,13 +56,14 @@ class BookingsList extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                AspectRatio(
-                                  aspectRatio: 166 / 140,
+                                Expanded(
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.network(
                                       item['image'],
                                       fit: BoxFit.cover,
+                                      height: 250,
+                                      width: 150,
                                     ),
                                   ),
                                 ),
@@ -71,7 +72,7 @@ class BookingsList extends StatelessWidget {
                                   item['title'],
                                   style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                   maxLines: 2,
@@ -98,16 +99,14 @@ class BookingsList extends StatelessWidget {
                                   },
                                 ),
                                 const SizedBox(height: 5),
-                                Flexible(
-                                  child: Text(
-                                    '${item['rating']['rate']}/5',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                    ),
+                                Text(
+                                  '${item['rating']['rate']}/5',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
                                   ),
                                 ),
-                                const SizedBox(width: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                   '${item['rating']['count']} Reviews',
                                   style: const TextStyle(
@@ -118,57 +117,56 @@ class BookingsList extends StatelessWidget {
                                 const SizedBox(height: 5),
                                 Row(
                                   children: [
-                                    const Text(
-                                      'From',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 5),
                                     Text(
-                                      'AED ${item['price']}',
-                                      style: const TextStyle(
-                                        color: Color(0xFFCF9D2C),
-                                        fontSize: 12,
+                                        'From ',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                        ),
                                       ),
-                                    ),
-                                    const Text(
-                                      ' / Person',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
+
+                                     Text(
+                                        'AED${item['price']}',
+                                        style: const TextStyle(
+                                          color: Color(0xFFCF9D2C),
+                                          fontSize: 10,
+                                        ),
                                       ),
-                                    ),
+
+                                    Text(
+                                        ' / Person',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+
                                   ],
                                 ),
+
                                 const SizedBox(height: 5),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Get.to(const BookingForm());
-                                  },
-                                  style: ButtonStyle(
-                                    backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        const Color(0xFFCF9D2C)),
-                                    padding:
-                                    MaterialStateProperty.all<EdgeInsetsGeometry>(
-                                        EdgeInsets.zero),
-                                    tapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                                    minimumSize:
-                                    MaterialStateProperty.all<Size>(
-                                        const Size(double.infinity, 10)),
-                                  ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 4),
-                                    child: Text(
-                                      'Book Now',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white,
+                                Center(
+                                  child: SizedBox(
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Get.to(const BookingForm());
+                                      },
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            const Color(0xFFCF9D2C)),
+                                        padding:
+                                        MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                            const EdgeInsets.symmetric(vertical: 2, horizontal: 40)),
+                                      ),
+                                      child: const Text(
+                                        'Book Now',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),

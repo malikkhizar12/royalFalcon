@@ -12,7 +12,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
 
   // List of country codes
   final List<String> _countryCodes = [
-    '+91', '+92', '+44', '+61', '+86', // Add more country codes as needed
+    '+90','+91', '+92', '+44', '+61', '+86', // Add more country codes as needed
   ];
 
   @override

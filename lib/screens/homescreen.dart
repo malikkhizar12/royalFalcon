@@ -1,463 +1,232 @@
-  import 'package:flutter/material.dart';
-  import 'package:get/get.dart';
-  import '../bindings/booking_binding.dart';
-  import '../widgets/custom_end_drawer.dart';
-  import 'bookings.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/screens/otp_verification_screen.dart';
+import 'package:royal_falcon_limousine/widgets/searchbar.dart';
+import '../bindings/booking_binding.dart';
+import '../widgets/custom_end_drawer.dart';
+import '../widgets/home_screen_categories.dart';
+import 'bookings.dart';
 
-  import 'package:flutter/material.dart';
-  import 'package:get/get.dart';
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
-  class HomeScreen extends StatefulWidget {
-    const HomeScreen({Key? key}) : super(key: key);
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
 
-    @override
-    _HomeScreenState createState() => _HomeScreenState();
+class _HomeScreenState extends State<HomeScreen> {
+  bool isDrawerOpen = false;
+
+  void toggleDrawer(bool isOpen) {
+    setState(() {
+      isDrawerOpen = isOpen;
+    });
   }
 
-  class _HomeScreenState extends State<HomeScreen> {
-    bool isDrawerOpen = false;
-
-    void toggleDrawer(bool isOpen) {
-      setState(() {
-        isDrawerOpen = isOpen;
-      });
-    }
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        backgroundColor: const Color(0xFF2D343C),
-        body: Stack(
-          children: [
-
-            Column(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF22262A),
+      body:
+          SingleChildScrollView(
+            child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 35),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  width: MediaQuery.of(context).size.width,
-                  height: 49,
-                  color: const Color(0xFF22272B),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset('images/home_icon.png'),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              // Handle notifications button press
-                            },
-                            icon: Image.asset('images/notificaton_icon.png'),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              toggleDrawer(!isDrawerOpen); // Toggle the drawer state
-                            },
-                            icon: Icon(Icons.menu), // Use a built-in icon instead of an image
-                          ),
-                        ],
-                      ),
-                    ],
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF22272B),
+                      borderRadius: BorderRadius.circular(4)
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                Get.to(const BookingsList(),binding: BookingBinding()); // Replace with your desired page
+                    margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
+                    padding:EdgeInsets.symmetric(horizontal: 30.w),
+                    height: 49,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset('images/home_icon.png'),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                // Handle notifications button press
                               },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
+                              icon: Image.asset('images/notificaton_icon.png'),
                             ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
+                            IconButton(
+                              onPressed: () {
+                                toggleDrawer(!isDrawerOpen); // Toggle the drawer state
                               },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.airplanemode_active,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Activities',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
+                              icon: Image.asset('images/menu_icon.png'),
                             ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Visa',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-
-                          // Add more Expanded widgets for other features
-                        ],
-                      ),
-                      SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                // Navigate to cars page
-                                // Get.to(const CarsPage()); // Replace with your desired page
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF22272B),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:Border.all(color: Color(0xFFEFEFEF),width: 0.5)
-                                    ),
-                                    width: 60,
-                                    height: 60,
-                                    margin: const EdgeInsets.all(8),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.car_repair_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  const Text(
-                                    'Cars',
-                                    style: TextStyle(fontSize: 11,
-                                      fontWeight:FontWeight.w600 ,color: Colors.white,),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-
-
-                          // Add more Expanded widgets for other features
-                        ],
-                      ),
-
-                      // Add more rows for additional features
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-                  child: SizedBox(
-                    width: 273,
-                    height: 35,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Get.to(HomeScreen());
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent), // Set transparent background color
-                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                            EdgeInsets.zero),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        minimumSize: MaterialStateProperty.all<Size>(
-                            const Size(double.infinity, 48)),
-                        shadowColor: MaterialStateProperty.all<Color>(
-                            const Color(0x613EEA52)), // Set shadow color
-                      ),
-                      child: Ink(
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xFFB17C0F),
-                              Color(0xFF000000),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(10),
+                          ],
                         ),
-                        child: Container(
-                          height: 48,
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'Get 10% discount on your first ride',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
+                      ],
                     ),
                   ),
-                ),
-                Container(
-                  child: Image.asset('images/map_pic.png'),
-                ),
+               Container(
+                 margin: EdgeInsets.symmetric(horizontal: 30.w),
+
+                 child: Column(
+                   children: [
+                     Container(
+                       alignment: Alignment.topLeft,
+                       child: Text('Hello Taimoor!',
+                         textAlign: TextAlign.left,
+                         style: TextStyle(
+                              fontSize: 20.sp,
+                             fontWeight: FontWeight.w600,
+                           color: Colors.white
+                       ),
+                       ),
+                     ),
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Text('taimoor12@gmail.com',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+                     SizedBox(height: 20.h,),
+                     const ElevatedSearchBar(hintText: "Search",),
+                     SizedBox(height: 20.h,),
+                     Container(
+                       color: const Color(0xFF333639),
+                          height:388.h,
+                          width: 381.w,
+
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 30.h,),
+                                 Row(
+                                  children: [
+
+                                    Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Fleets', // The text for the category
+                                        imagePath: 'images/wheels.png', // Path to the image
+                                        onTap: () {
+                                          Get.to(const BookingsList(), binding: BookingBinding()); // Navigation to target page
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Getaway', // The text for the category
+                                        imagePath: 'images/getaway.png', // Path to the image
+                                        onTap: () {
+                                          Get.to( ()=>  OtpVerification()); // Replace with your desired page
+                                          // Get.to(const CarsPage()); // Replace with your desired page
+                                        },
+                                      ),
+                                    ),
+                                    const Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Explore', // The text for the category
+                                        imagePath: 'images/explore.png', // Path to the image
+
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+                                const Row(
+                                  children: [
+                                    Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Stay Local', // The text for the category
+                                        imagePath: 'images/stay_local.png', // Path to the image
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Passport pro', // The text for the category
+                                        imagePath: 'images/passport_pro.png', // Path to the image
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Invest in', // The text for the category
+                                        imagePath: 'images/invest.png', // Path to the image
+                                      ),
+                                    ),
+
+
+
+                                    // Add more Expanded widgets for other features
+                                  ],
+                                ),
+                                SizedBox(height: 20.h),
+
+                                 Row(
+                                  children: [
+
+                                    const Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'Partner up', // The text for the category
+                                        imagePath: 'images/partner.png', // Path to the image
+                                      ),
+                                    ),
+                                    const Expanded(
+                                      child: HomeScreenCategories(
+                                        categoryTitle: 'More services', // The text for the category
+                                        imagePath: 'images/more_services.png', // Path to the image
+                                      ),
+                                    ),
+                                   Container(
+                                     margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                      width: 77.h,
+                                     height: 67.h,
+                                    ),
+                                    // Expanded(
+                                    //   child: HomeScreenCategories(
+                                    //     categoryTitle: 'Who we are!', // The text for the category
+                                    //     imagePath: 'images/more_services.png', // Path to the image
+                                    //   ),
+                                    // ),
+
+                                    // Add more Expanded widgets for other features
+                                  ],
+                                ),
+
+                              ],
+                            ),
+
+                        ),
+                   ],
+                 ),
+               ),
+            
+            
+
+                if (isDrawerOpen)
+                  GestureDetector(
+                    onTap: () {
+                      toggleDrawer(false); // Close drawer when tapped outside
+                    },
+                    child: Container(
+                      color: Colors.transparent, // Make the rest of the screen tappable
+                    ),
+                  ),
+                if (isDrawerOpen)
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    child: CustomDrawer(
+                      toggleDrawer: toggleDrawer,
+                    ),
+                  ),
               ],
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40))
-                ),
-                height: MediaQuery.of(context).size.height * 0.22, // 22% of screen height
-                child: Center(
-                  child: Column(
-                    children: [
-                      Container(width: 100,height: 2,
-                      margin: EdgeInsets.only(top: 10),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white)
-                      ),
-                      ),
-
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            if (isDrawerOpen)
-              GestureDetector(
-                onTap: () {
-                  toggleDrawer(false); // Close drawer when tapped outside
-                },
-                child: Container(
-                  color: Colors.transparent, // Make the rest of the screen tappable
-                ),
-              ),
-            if (isDrawerOpen)
-              Positioned(
-                top: 0,
-                bottom: 0,
-                left: 0,
-                child: CustomDrawer(
-                  toggleDrawer: toggleDrawer,
-                ),
-              ),
-          ],
-        ),
-      );
-    }
+          ),
+    );
   }
+}
+

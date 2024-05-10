@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:royal_falcon_limousine/bindings/booking_binding.dart';
 import 'package:royal_falcon_limousine/screens/bookings.dart';
@@ -26,26 +27,26 @@ import 'homescreen.dart';
           
                   // margin: EdgeInsets.only(bottom: 20),
                 Image.asset('images/royal_falcon.png'),
-                const SizedBox(height: 50,),
+                SizedBox(height: 50.h,),
           
                 Container(
                     alignment: Alignment.topLeft,
-                    margin: const EdgeInsets.only(left: 20),
-                    child: const Text('Phone Number',
+                    margin: EdgeInsets.only(left: 20.w),
+                    child:  Text('Phone Number',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 18,
+                        fontSize: 18.sp,
           
                       ),
                     )
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+                  margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
                   child: const PhoneNumberField(),
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(bottom: 30, top: 10,right: 20,left: 20),
+                  padding: EdgeInsets.only(bottom: 30.h, top: 10.h,right: 20.w,left: 20.w),
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -60,10 +61,10 @@ import 'homescreen.dart';
                         color: Colors.white
                       ),
                       ),
-                      const SizedBox(height:30 ,),
+                      SizedBox(height:30.h ,),
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: 50.h,
+                        width: 50.w,
                         decoration: BoxDecoration(
                           color: const Color(0xFF1A1E23
                           ),
@@ -73,11 +74,11 @@ import 'homescreen.dart';
                           onPressed: () {
                             // Handle Google login
                           },
-                          icon: Image.asset('images/google_logo.webp',width: 40,height:40,),
+                          icon: Image.asset('images/google_logo.webp',width: 40.w,height:40.h,),
                         ),
 
                       ),
-                      const SizedBox(height:30 ,),
+                      SizedBox(height:30.h ,),
 
                       ElevatedButton(
                         onPressed: () {
@@ -88,22 +89,27 @@ import 'homescreen.dart';
                           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.zero), // Set padding to zero
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap, // Expand tap target to the size of the button
                           minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 48)), // Set minimum size to full width and 48 height
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(13), // Set corner radius to 13
+                            ),
+                          ),
                         ),
                         child: Container(
                           width: double.infinity, // Ensure button takes up full width
-                          height: 48, // Set desired height
+                          height: 48.h, // Set desired height
                           alignment: Alignment.center,
-                          child: const Text(
+                          child: Text(
                             'Login',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(height:5 ,),
+                      SizedBox(height:5.h ,),
                     ],
                   ),
                 )

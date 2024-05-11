@@ -15,7 +15,8 @@ class CustomFormField extends StatelessWidget {
         children: [
           const SizedBox(height: 10),
           Container(
-            padding: const EdgeInsets.only(left: 5),
+            padding: const EdgeInsets.only(left: 5)
+            ,
             child: Text(
               label,
               style: const TextStyle(

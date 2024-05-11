@@ -1,84 +1,250 @@
-// CustomDrawer code
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomDrawer extends StatelessWidget {
-  final Function(bool) toggleDrawer;
-
-  const CustomDrawer({
-    Key? key,
-    required this.toggleDrawer,
-  }) : super(key: key);
+class CustomEndDrawer extends StatelessWidget {
+  const CustomEndDrawer({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        toggleDrawer(false); // Close drawer when tapped outside
-      },
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-        transform: Matrix4.translationValues(
-          MediaQuery.of(context).size.width * 0.2, // Adjust as needed
-          0,
-          0,
-        ),
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: MediaQuery.of(context).size.height,
-          color: Colors.black,
-          child: Center(
-            child:                 Container(
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-              child: SizedBox(
-                width: 273,
-                height: 35,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Get.to(HomeScreen());
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.transparent), // Set transparent background color
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        EdgeInsets.zero),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    minimumSize: MaterialStateProperty.all<Size>(
-                        const Size(double.infinity, 48)),
-                    shadowColor: MaterialStateProperty.all<Color>(
-                        const Color(0x613EEA52)), // Set shadow color
-                  ),
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFFB17C0F),
-                          Color(0xFF000000),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Container(
-                      height: 48,
-                      alignment: Alignment.center,
-                      child: const Text(
-                        'Get 10% discount on your first ride',
+    return SafeArea(
+      child: Drawer(
+        backgroundColor:  const Color(0xFF3A3E41),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+
+            Image.asset('images/home_icon.png'),
+
+            Container(
+              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              margin: EdgeInsets.only(left: 10.w,right: 20.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Color(0xFF333639),
+              ),
+              child: Column(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Profile',
                         style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
                           color: Colors.white,
+                          fontSize: 16.sp,
+
                         ),
-                      ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
                     ),
                   ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('My Booking',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Favaurite',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('RFL wallet',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 50.h,),
+            Container(
+              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              margin: EdgeInsets.only(left: 10.w,right: 20.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Color(0xFF333639),
+              ),
+              child: Column(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Region',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Currency',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Language',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 50.h,),
+            Container(
+              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              margin: EdgeInsets.only(left: 10.w,right: 20.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Color(0xFF333639),
+              ),
+              child: Column(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Help & Support',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Add your onPressed callback here
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Terms & Conditions',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+
+                          ),
+                        ), // Button text
+                        Image.asset('images/nav_arrow_right.png')
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 50.h,),
+            
+            Center(
+              child: Text('Plan your Adventure',
+                style: TextStyle(
+                  fontSize: 22.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
                 ),
               ),
             ),
+            SizedBox(height: 20.h,),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:MaterialStateProperty.all<Color?>(Color(0xFFFFBC07))
+                ),
+                  onPressed: (){},
+                  child: Text("Sign Up Now",style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.sp
+                  ),)
 
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

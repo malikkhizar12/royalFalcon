@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/screens/profile.dart';
 
 class CustomEndDrawer extends StatelessWidget {
-  const CustomEndDrawer({
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  CustomEndDrawer({
     super.key,
   });
 
@@ -18,7 +21,7 @@ class CustomEndDrawer extends StatelessWidget {
             Image.asset('images/home_icon.png'),
 
             Container(
-              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              padding: EdgeInsets.only(left: 10.w,right: 10.w,top: 10.h,bottom: 10.h),
               margin: EdgeInsets.only(left: 10.w,right: 20.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
@@ -28,7 +31,8 @@ class CustomEndDrawer extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      // Add your onPressed callback here
+                      Get.to(const ProfileScreen());
+
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +107,7 @@ class CustomEndDrawer extends StatelessWidget {
             ),
             SizedBox(height: 50.h,),
             Container(
-              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              padding: EdgeInsets.only(left: 10.w,right: 10.w,top: 10.h,bottom: 10.h),
               margin: EdgeInsets.only(left: 10.w,right: 20.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
@@ -170,7 +174,7 @@ class CustomEndDrawer extends StatelessWidget {
             ),
             SizedBox(height: 50.h,),
             Container(
-              padding: EdgeInsets.only(left: 10.w,right: 10.w),
+              padding: EdgeInsets.only(left: 10.w,right: 10.w,top: 10.h,bottom: 10.h),
               margin: EdgeInsets.only(left: 10.w,right: 20.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),

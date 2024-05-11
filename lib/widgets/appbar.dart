@@ -3,20 +3,27 @@ import 'package:royal_falcon_limousine/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-
-  const CustomAppBar({Key? key, required this.title}) : super(key: key);
+  final Color color;
+  final Color bgColor;
+  const CustomAppBar(
+      { Key? key,
+        this.bgColor =  backgroundColor,
+        required this.title,
+        this.color = const Color(0xFF2D343C)
+      }
+      ) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backgroundColor,
+      backgroundColor: bgColor,
       leading: SizedBox(
         height: 20,
         width: 20,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
-            color: const Color(0xFF2D343C),
+            color: color,
           ),
           margin: const EdgeInsets.all(8.0),
           child: IconButton(

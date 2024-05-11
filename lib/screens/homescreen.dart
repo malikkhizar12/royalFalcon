@@ -23,12 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
       isDrawerOpen = isOpen;
     });
   }
-  final _scaffoldkey=GlobalKey<ScaffoldState>();
+  final scaffoldkey=GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        key: _scaffoldkey,
+        key: scaffoldkey,
         endDrawer: CustomEndDrawer(),
         backgroundColor: const Color(0xFF22262A),
         body:
@@ -59,8 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               IconButton(
                                 onPressed: () {
                                   WidgetsBinding.instance!.addPostFrameCallback((_) {
-                                    if (_scaffoldkey.currentState != null) {
-                                      _scaffoldkey.currentState!.openEndDrawer();
+                                    if (scaffoldkey.currentState != null) {
+                                      scaffoldkey.currentState!.openEndDrawer();
                                     } else {
                                       print("ScaffoldState is null");
                                     }
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                      children: [
                        Container(
                          alignment: Alignment.topLeft,
-                         child: Text('Hello Taimoor!',
+                         child: Text('Hello Khizar!',
                            textAlign: TextAlign.left,
                            style: TextStyle(
                                 fontSize: 20.sp,

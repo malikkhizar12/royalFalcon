@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/screens/Rides.dart';
 import 'package:royal_falcon_limousine/screens/otp_verification_screen.dart';
 import 'package:royal_falcon_limousine/widgets/searchbar.dart';
 import '../bindings/booking_binding.dart';
@@ -119,10 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                       Expanded(
                                         child: HomeScreenCategories(
-                                          categoryTitle: 'Fleets', // The text for the category
+                                          categoryTitle: 'Rides', // The text for the category
                                           imagePath: 'images/wheels.png', // Path to the image
                                           onTap: () {
-                                            Get.to(const BookingsList(), binding: BookingBinding()); // Navigation to target page
+                                            Get.to(Rides()); // Navigation to target page
                                           },
                                         ),
                                       ),

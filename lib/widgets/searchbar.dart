@@ -4,12 +4,17 @@ import 'package:royal_falcon_limousine/colors.dart';
 
 class ElevatedSearchBar extends StatelessWidget {
   final ValueChanged<String>? onChanged;
-  final String hintText; // Consistent variable naming convention
+  final String hintText;
+  final Color? fillcolor;// Consistent variable naming convention
+  final Color? textcolor;// Consistent variable naming convention
+
 
   const ElevatedSearchBar({
     Key? key,
     this.onChanged,
-    this.hintText = 'Search Car', // Default hint text
+    this.textcolor=Colors.grey,
+    this.hintText = 'Search Car',
+    this.fillcolor=Colors.white// Default hint text
   }) : super(key: key);
 
   @override
@@ -36,9 +41,10 @@ class ElevatedSearchBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextField(
+            cursorColor: Colors.white,
             textAlign: TextAlign.center, // Center the text and hint text
             style: TextStyle(
-              color: Colors.grey,
+              color: textcolor,
             ),
             onChanged: onChanged,
             decoration: InputDecoration(
@@ -52,17 +58,17 @@ class ElevatedSearchBar extends StatelessWidget {
                   'images/search_icon.png',
                   height: 23.h,
                   width: 23.w,
-                  color: Colors.grey.withOpacity(0.7),
+                  color: textcolor,
                 ),
               ),
               hintText: hintText, // Corrected the variable name
               hintStyle: TextStyle(
-                color: Colors.grey.withOpacity(0.7),
+                color: textcolor,
                 fontWeight: FontWeight.w400,
                 fontSize: 18.sp,
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: fillcolor,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(42),
                 borderSide: BorderSide.none,

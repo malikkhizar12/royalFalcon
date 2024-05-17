@@ -7,10 +7,11 @@ import 'explore_list.dart';
 import 'getaway_packages.dart';
 
 class GetAway extends StatelessWidget {
-  const GetAway({super.key});
-
+   GetAway({super.key});
   @override
   Widget build(BuildContext context) {
+    final List<String> countries= ['Australia', 'Dubai','Canada', 'Saudi Arabia', 'Yemen' ];
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFF22272B),
@@ -41,7 +42,7 @@ class GetAway extends StatelessWidget {
                     height: 60,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 6,
+                      itemCount: countries.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           decoration: BoxDecoration(
@@ -51,7 +52,11 @@ class GetAway extends StatelessWidget {
                               horizontal: 10, vertical: 10),
                           width: 100.w, // adjust the width of your list items
                           margin: const EdgeInsets.all(8),
-                          child: const Center(child: Text("Australia")),
+                          child:  Center(child: Text(
+                            countries[index], // Get the text from the list
+                            style: TextStyle(color: Colors.black),
+                          )
+                          ),
                         );
                       },
                     ),
@@ -73,7 +78,7 @@ class GetAway extends StatelessWidget {
                       itemCount: 5,
                       itemBuilder: (BuildContext context, int index) {
                         return const ExploreCard(
-                          imageUrl: 'https://via.placeholder.com/150',
+                          imageUrl: 'https://www.frost.com/wp-content/uploads/2018/02/Dubai-Tourism-1080x675.jpg',
                           title: 'Dubai Safari Park',
                           location: 'Dubai',
                         );
@@ -108,7 +113,7 @@ class GetAway extends StatelessWidget {
                           itemCount: 6,
                           itemBuilder: (BuildContext context, index) {
                             return const PackagesCard(
-                              imageUrl: 'https://via.placeholder.com/150',
+                              imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRSfiks-mlGyMj_fD3wJmR71Qfnu2rJ3_-ajn3rqb-DC1yuAFuWNjWxM8HbSjqqIHN3TA&usqp=CAU',
                               title: '3 days Package',
                               duration: '6 Days Trip',
                               price: 'AED 80 / Person',

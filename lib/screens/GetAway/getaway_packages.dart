@@ -48,7 +48,7 @@ color: Color(0xFF2D2D2D),
                     SizedBox(height: 5.h),
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFFFFBC07),
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ color: Color(0xFF2D2D2D),
                     SizedBox(height: 5.h),
                     Text(
                       duration,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                       ),
@@ -65,7 +65,7 @@ color: Color(0xFF2D2D2D),
                     SizedBox(height: 15.h),
                     Text(
                       price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -76,21 +76,21 @@ color: Color(0xFF2D2D2D),
               ),
               Column(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.favorite_border,
                     color:Color(0xFFFFBC07),
                   ),
                   Spacer(),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.star,
                         color: Color(0xFFFFBC07),
                         size: 20,
                       ),
                       Text(
                         rating.toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFFFBC07)

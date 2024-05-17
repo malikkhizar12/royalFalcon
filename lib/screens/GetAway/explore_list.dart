@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExploreCard extends StatelessWidget {
   final String imageUrl;
@@ -62,9 +64,9 @@ class ExploreCard extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: TextStyle(
+                  style:  TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -75,26 +77,31 @@ class ExploreCard extends StatelessWidget {
                       color: Color(0xFFFFBC07),
                       size: 16,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       location,
-                      style: TextStyle(
+                      style:  TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFFBC07),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                const SizedBox(height: 8),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: 135
                   ),
-                  child: const Text('Explore Now'),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFFFBC07),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                    child: const Text('Explore Now',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                  ),
                 ),
               ],
             ),

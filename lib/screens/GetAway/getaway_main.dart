@@ -5,11 +5,25 @@ import '../../widgets/appbarcustom.dart';
 import '../../widgets/searchbar.dart';
 import 'explore_list.dart';
 import 'getaway_packages.dart';
+import 'models/explore_card_model.dart';
 
 class GetAway extends StatelessWidget {
    GetAway({super.key});
   @override
   Widget build(BuildContext context) {
+    final List<ExploreCardModel> exploreCards = [
+      ExploreCardModel(
+        imageUrl: 'https://i2.wp.com/www.alltherooms.com/blog/wp-content/uploads/2018/09/Feature-Beaches-in-the-Maldives-By-Nikolay-007.jpg?fit=1000%2C667&ssl=1',
+        title: 'Beautiful Beach',
+        location: 'Maldives',
+      ),
+      ExploreCardModel(
+        imageUrl: 'https://www.frost.com/wp-content/uploads/2018/02/Dubai-Tourism-1080x675.jpg',
+        title: 'Mountain View',
+        location: 'Switzerland',
+      ),
+      // Add more ExploreCardModel instances as needed
+    ];
     final List<String> countries= ['Australia', 'Dubai','Canada', 'Saudi Arabia', 'Yemen' ];
 
     return SafeArea(
@@ -17,7 +31,7 @@ class GetAway extends StatelessWidget {
         backgroundColor: const Color(0xFF22272B),
         body: ListView(
           children: [
-            const appbarcustom(),
+            const appbarcustom(title: 'Getaway',),
             SizedBox(
               height: 20.h,
             ),
@@ -75,12 +89,10 @@ class GetAway extends StatelessWidget {
                     height: 239.h,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: exploreCards.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return const ExploreCard(
-                          imageUrl: 'https://www.frost.com/wp-content/uploads/2018/02/Dubai-Tourism-1080x675.jpg',
-                          title: 'Dubai Safari Park',
-                          location: 'Dubai',
+                        return ExploreCard(
+                          exploreCard: exploreCards[index],
                         );
                       },
                     ),

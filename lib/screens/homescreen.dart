@@ -32,190 +32,207 @@ class _HomeScreenState extends State<HomeScreen> {
         endDrawer: CustomEndDrawer(),
         backgroundColor: const Color(0xFF22262A),
         body: SingleChildScrollView(
-          child: Column(
+          child: Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: const Color(0xFF22272B),
-                    borderRadius: BorderRadius.circular(4)),
-                margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                height: 49,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset('images/home_icon.png'),
-                    Row(
+              Opacity(
+                opacity: 0.08, // Set opacity to 10%
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/home_background.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF22272B),
+                        borderRadius: BorderRadius.circular(4)),
+                    margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
+                    padding: EdgeInsets.symmetric(horizontal: 30.w),
+                    height: 49,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            // Handle notifications button press
-                          },
-                          icon: Image.asset('images/notificaton_icon.png'),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            WidgetsBinding.instance!.addPostFrameCallback((_) {
-                              if (Scaffoldkey.currentState != null) {
-                                Scaffoldkey.currentState!.openEndDrawer();
-                              } else {
-                                print("ScaffoldState is null");
-                              }
-                            });
-                          },
-                          icon: Image.asset('images/menu_icon.png'),
+                        Image.asset('images/home_icon.png'),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                // Handle notifications button press
+                              },
+                              icon: Image.asset('images/notificaton_icon.png'),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                WidgetsBinding.instance!.addPostFrameCallback((_) {
+                                  if (Scaffoldkey.currentState != null) {
+                                    Scaffoldkey.currentState!.openEndDrawer();
+                                  } else {
+                                    print("ScaffoldState is null");
+                                  }
+                                });
+                              },
+                              icon: Image.asset('images/menu_icon.png'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 30.w),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Hello Khizar!',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'taimoor12@gmail.com',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    const ElevatedSearchBar(
-                      hintText: "Search",
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Container(
-                      color: const Color(0xFF3A3E41),
-                      height: 388.h,
-                      width: 381.w,
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 30.h,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30.w),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Hello Khizar!',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
                           ),
-                          Row(
+                        ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'taimoor12@gmail.com',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        const ElevatedSearchBar(
+                          hintText: "Search",
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Container(
+                          color: const Color(0xFF3A3E41),
+                          height: 388.h,
+                          width: 381.w,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Rides', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/wheels.png', // Path to the image
-                                  onTap: () {
-                                    Get.to(
-                                        Rides()); // Navigation to target page
-                                  },
-                                ),
-                              ),
-                              Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                      onTap: () {
+                                        Get.to(
+                                            Rides()); // Navigation to target page
+                                      },
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Getaway', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/getaway.png', // Path to the image
-                                  onTap: () {
-                                    Get.to(() =>
-                                        GetAway()); // Replace with your desired page
-                                    // Get.to(const CarsPage()); // Replace with your desired page
-                                  },
-                                ),
-                              ),
-                              const Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                      onTap: () {
+                                        Get.to(() =>
+                                            GetAway()); // Replace with your desired page
+                                        // Get.to(const CarsPage()); // Replace with your desired page
+                                      },
+                                    ),
+                                  ),
+                                  const Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Explore', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/explore.png', // Path to the image
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                          SizedBox(height: 20.h),
-                          const Row(
-                            children: [
-                              Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                              SizedBox(height: 20.h),
+                              const Row(
+                                children: [
+                                  Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Stay Local', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/stay_local.png', // Path to the image
-                                ),
-                              ),
-                              Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Passport pro', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/passport_pro.png', // Path to the image
-                                ),
-                              ),
-                              Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Invest in', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/invest.png', // Path to the image
-                                ),
-                              ),
+                                    ),
+                                  ),
 
-                              // Add more Expanded widgets for other features
-                            ],
-                          ),
-                          SizedBox(height: 20.h),
-                          Row(
-                            children: [
-                              const Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                  // Add more Expanded widgets for other features
+                                ],
+                              ),
+                              SizedBox(height: 20.h),
+                              Row(
+                                children: [
+                                  const Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'Partner up', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/partner.png', // Path to the image
-                                ),
-                              ),
-                              const Expanded(
-                                child: HomeScreenCategories(
-                                  categoryTitle:
+                                    ),
+                                  ),
+                                  const Expanded(
+                                    child: HomeScreenCategories(
+                                      categoryTitle:
                                       'More services', // The text for the category
-                                  imagePath:
+                                      imagePath:
                                       'images/more_services.png', // Path to the image
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 25.w),
-                                width: 77.h,
-                                height: 67.h,
-                              ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(horizontal: 25.w),
+                                    width: 77.h,
+                                    height: 67.h,
+                                  ),
 
+                                ],
+                              ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

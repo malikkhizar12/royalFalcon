@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class appbarcustom extends StatelessWidget {
+  final String title;
   const appbarcustom({
+
     super.key,
+    required this.title,
   });
 
   @override
@@ -33,7 +36,7 @@ class appbarcustom extends StatelessWidget {
           Spacer(flex: 3,),
 
           Text(
-            "Getaway",
+            title,
             style: TextStyle(color: Colors.white, fontSize: 20.sp),
           ),
           Spacer(flex: 2,),

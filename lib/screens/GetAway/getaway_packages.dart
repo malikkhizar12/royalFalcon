@@ -22,7 +22,7 @@ class PackagesCard extends StatelessWidget {
     return Container(
       height: 120,
       child: Card(
-color: Color(0xFF2D2D2D),
+color: const Color(0xFF2D2D2D),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -40,7 +40,7 @@ color: Color(0xFF2D2D2D),
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

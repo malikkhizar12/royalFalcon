@@ -1,17 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/screens/GetAway/explore_now.dart';
+import 'models/explore_card_model.dart';
+import 'models/explore_card_model.dart';
 
 class ExploreCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String location;
+  final ExploreCardModel exploreCard;
 
   const ExploreCard({
     Key? key,
-    required this.imageUrl,
-    required this.title,
-    required this.location,
+    required this.exploreCard,
   }) : super(key: key);
 
   @override
@@ -34,7 +33,7 @@ class ExploreCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image.network(
-              imageUrl,
+              exploreCard.imageUrl,
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.cover,
@@ -63,8 +62,8 @@ class ExploreCard extends StatelessWidget {
                   child: Container(),
                 ),
                 Text(
-                  title,
-                  style:  TextStyle(
+                  exploreCard.title,
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 22.sp,
                     fontWeight: FontWeight.bold,
@@ -79,8 +78,8 @@ class ExploreCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      location,
-                      style:  TextStyle(
+                      exploreCard.location,
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.sp,
                       ),
@@ -89,18 +88,21 @@ class ExploreCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 135
-                  ),
+                  constraints: BoxConstraints(minWidth: 135),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => ExploreNow());
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFFBC07),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: const Text('Explore Now',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
+                    child: const Text(
+                      'Explore Now',
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],

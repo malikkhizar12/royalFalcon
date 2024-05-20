@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../utils/colors.dart';
-import 'homescreen.dart';
+import '../../utils/colors.dart';
+import '../homescreen.dart';
 
 class CountryCodes extends StatelessWidget {
   const CountryCodes({super.key});

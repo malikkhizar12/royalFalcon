@@ -5,7 +5,7 @@ import '../widgets/custom_end_drawer.dart';
 import '../widgets/home_screen_categories.dart';
 import '../widgets/searchbar.dart';
 import 'GetAway/getaway_main.dart';
-import 'Rides.dart';
+import 'Rides/Rides.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

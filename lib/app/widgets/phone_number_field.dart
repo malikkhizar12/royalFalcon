@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PhoneNumberField extends StatefulWidget {
-  const PhoneNumberField({super.key});
+  final TextEditingController controller;
+
+  const PhoneNumberField({super.key, required this.controller});
 
   @override
   _PhoneNumberFieldState createState() => _PhoneNumberFieldState();
@@ -12,7 +14,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
 
   // List of country codes
   final List<String> _countryCodes = [
-    '+90','+91', '+92', '+44', '+61', '+86', // Add more country codes as needed
+    '+90', '+91', '+92', '+44', '+61', '+86', // Add more country codes as needed
   ];
 
   @override
@@ -57,6 +59,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
           const SizedBox(width: 8), // Add some space between dropdown and text field
           Expanded(
             child: TextFormField(
+              controller: widget.controller,
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                 border: InputBorder.none,

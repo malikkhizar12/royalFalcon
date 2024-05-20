@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../widgets/custom_end_drawer.dart';
-import '../widgets/home_screen_categories.dart';
-import '../widgets/searchbar.dart';
-import 'GetAway/getaway_main.dart';
-import 'Rides/Rides.dart';
+import '../../widgets/custom_end_drawer.dart';
+import '../../widgets/home_screen_categories.dart';
+import '../../widgets/searchbar.dart';
+import '../Explore/explore_main.dart';
+import '../GetAway/getaway_main.dart';
+import '../Rides/Rides.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -160,12 +161,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                       },
                                     ),
                                   ),
-                                  const Expanded(
+                                   Expanded(
                                     child: HomeScreenCategories(
                                       categoryTitle:
                                       'Explore', // The text for the category
                                       imagePath:
-                                      'images/explore.png', // Path to the image
+                                      'images/explore.png',
+                                      onTap: () {
+                                        Get.to(() =>
+                                            ExploreMain()); // Replace with your desired page
+                                        // Get.to(const CarsPage()); // Replace with your desired page
+                                      },
+
                                     ),
                                   ),
                                 ],

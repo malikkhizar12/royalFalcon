@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../widgets/appbar.dart';
+import '../../widgets/appbar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

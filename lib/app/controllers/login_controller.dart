@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../UI/homescreen.dart';
+import '../UI/Home_profile/homescreen.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;

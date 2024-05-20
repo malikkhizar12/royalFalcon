@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../utils/colors.dart';
-import '../homescreen.dart';
+import '../Home_profile/homescreen.dart';
 
 class CountryCodes extends StatelessWidget {
   const CountryCodes({super.key});

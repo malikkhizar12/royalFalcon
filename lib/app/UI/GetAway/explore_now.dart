@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/appbarcustom.dart';
+import 'models/gallery_tab_model.dart';
 
 class ExploreNow extends StatefulWidget {
   const ExploreNow({super.key});
@@ -11,13 +12,31 @@ class ExploreNow extends StatefulWidget {
 
 class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
   late TabController _tabController;
+  double _tabBarViewHeight = 123.h;
+  double _mainContainerHeight= 380.h;
+
+  final List<ImageModel> _images = [
+    ImageModel(imageUrl: 'images/dubai_safari.jpg'),
+    ImageModel(imageUrl: 'images/home_background.jpg'),
+    ImageModel(imageUrl: 'images/Explore_now.png'),
+    ImageModel(imageUrl: 'images/dubai_safari.jpg'),
+    ImageModel(imageUrl: 'images/home_background.jpg'),
+    ImageModel(imageUrl: 'images/Explore_now.png'),
+    ImageModel(imageUrl: 'images/dubai_safari.jpg'),
+    ImageModel(imageUrl: 'images/home_background.jpg'),
+    ImageModel(imageUrl: 'images/Explore_now.png'),
+
+  ];
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(() {
-      setState(() {}); // Rebuild when the tab is changed
+      setState(() {
+        _tabBarViewHeight = _tabController.index == 1 ? 220.h : 123.h;
+        _mainContainerHeight = _tabController.index == 1 ? 460.h : 380.h;
+      });
     });
   }
 
@@ -29,6 +48,15 @@ class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double appBarHeight = 60.h; // Assuming app bar height
+    double tabBarHeight = 50.h; // Assuming tab bar height
+    double bottomPadding = MediaQuery.of(context).padding.bottom;
+    double availableHeight = MediaQuery.of(context).size.height -
+        appBarHeight -
+        tabBarHeight -
+        bottomPadding -
+        120.h; // Adjust this value based on other elements in your UI
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -56,7 +84,7 @@ class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
                   minWidth: MediaQuery.of(context).size.width * 0.8,
                 ),
                 child: Container(
-                  height: 380.h,
+                  height: _mainContainerHeight,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(200, 128, 128, 138),
@@ -128,6 +156,7 @@ class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
                                     left: index *
                                         18.0, // Adjust this value for the desired overlap
                                     child: const CircleAvatar(
+                                      backgroundImage: AssetImage('images/Explore_now.jpg'),
                                       radius: 15, // Adjust the radius as needed
                                     ),
                                   );
@@ -173,12 +202,12 @@ class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
                         ],
                       ),
                       SizedBox(
-                        height: 127.h, // Adjust the height as needed
+                        height: _tabBarViewHeight,
                         child: TabBarView(
                           controller: _tabController,
-                          children: const [
+                          children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 8.0),
+                              padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
                                 "Dubai safari park is the new and updated version of Dubai zoo "
                                     "which now offers you the luxury of exploring and discovering up "
@@ -188,11 +217,38 @@ class _ExploreNowState extends State<ExploreNow> with TickerProviderStateMixin {
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
-                            Text("this is Gallery"),
-                            Text("this is Facilities"),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: SizedBox(
+                                height: availableHeight,
+                                child: GridView.builder(
+                                  itemCount: _images.length,
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 15,
+                                    childAspectRatio: 1.4,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    return Image.asset(
+                                      _images[index].imageUrl,
+                                      fit: BoxFit.cover,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            const Padding(
+                              padding:  EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                "1. Swimming Pool\n2. Jeep rally\n 3. Travel Insurance\n 4. Accomodation\n 5. Health and wellness\n 6. Pick and Drop",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ],
                         ),
                       ),
+                      SizedBox(height: 8.h,),
                       ElevatedButton(
                         onPressed: () {
                           // Get.to(()=>ExploreNow());

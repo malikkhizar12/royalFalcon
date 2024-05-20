@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:royal_falcon_limousine/screens/Rides.dart';
-import 'package:royal_falcon_limousine/widgets/searchbar.dart';
 import '../widgets/custom_end_drawer.dart';
 import '../widgets/home_screen_categories.dart';
+import '../widgets/searchbar.dart';
 import 'GetAway/getaway_main.dart';
+import 'Rides.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: const Color(0xFF22272B),
                         borderRadius: BorderRadius.circular(4)),
                     margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
                     padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -121,7 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 20.h,
                         ),
                         Container(
-                          color: const Color(0xFF3A3E41),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF3A3E41),
+                            border: Border.all(color: Colors.white,width: 0.4)
+                          ),
                           height: 388.h,
                           width: 381.w,
                           child: Column(

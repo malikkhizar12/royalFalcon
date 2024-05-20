@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:royal_falcon_limousine/widgets/booking_type.dart';
-
+import '../widgets/booking_type.dart';
 import '../widgets/custom_end_drawer.dart';
 import '../widgets/starRating.dart';
 

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:royal_falcon_limousine/controllers/booking_list_controller.dart';
+import '../controllers/booking_list_controller.dart';
 
 class BookingBinding extends Bindings {
   @override

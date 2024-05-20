@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
 import '../widgets/searchbar.dart';
 
 class OtpVerification extends StatelessWidget {

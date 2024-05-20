@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:royal_falcon_limousine/widgets/appbar.dart';
-import 'package:royal_falcon_limousine/functions/booking_form_fields.dart';
 
-import '../colors.dart';
+
+import '../utils/colors.dart';
+import '../functions/booking_form_fields.dart';
+import '../widgets/appbar.dart';
 
 class BookingForm extends StatefulWidget {
   const BookingForm({Key? key}) : super(key: key);

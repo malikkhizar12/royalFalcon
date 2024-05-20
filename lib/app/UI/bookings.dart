@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../screens/booking_form.dart';
+import '../controllers/booking_list_controller.dart';
+import 'booking_form.dart';
 import '../widgets/appbar.dart';
 import '../widgets/searchbar.dart';
-import 'package:royal_falcon_limousine/colors.dart';
-import 'package:royal_falcon_limousine/controllers/booking_list_controller.dart';
+import 'package:royal_falcon_limousine/app/utils/colors.dart';
 
 class BookingsList extends StatelessWidget {
   const BookingsList({Key? key});

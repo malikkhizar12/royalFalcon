@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:royal_falcon_limousine/colors.dart';
+import 'package:royal_falcon_limousine/app/utils/colors.dart';
 
 class ElevatedSearchBar extends StatelessWidget {
   final ValueChanged<String>? onChanged;
@@ -23,21 +23,14 @@ class ElevatedSearchBar extends StatelessWidget {
       margin: EdgeInsets.only(top: 15.h, bottom: 30.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x005e5b5b).withOpacity(0.2), // Set outer shadow color
-            spreadRadius: 3, // Set outer spread radius
-            blurRadius: 7.5, // Set outer blur radius
-            offset: Offset(0, 1), // Set outer offset
-          ),
-        ],
+
+
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: Container(
           height: 60.h,
           decoration: BoxDecoration(
-            color: backgroundColor, // Set background color
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextField(

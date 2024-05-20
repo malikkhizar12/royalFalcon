@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:royal_falcon_limousine/colors.dart';
+import 'package:royal_falcon_limousine/app/utils/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

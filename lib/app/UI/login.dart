@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:royal_falcon_limousine/bindings/booking_binding.dart';
-import 'package:royal_falcon_limousine/screens/bookings.dart';
-import 'package:royal_falcon_limousine/widgets/phone_number_field.dart';
 
-import '../colors.dart';
+import '../utils/colors.dart';
+import '../widgets/phone_number_field.dart';
 import 'homescreen.dart';
 
 

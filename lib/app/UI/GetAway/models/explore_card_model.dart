@@ -1,5 +1,3 @@
-
-
 class ExploreCardModel {
   final String imageUrl;
   final String title;

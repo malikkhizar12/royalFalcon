@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:royal_falcon_limousine/screens/GetAway/explore_now.dart';
+import 'explore_now.dart';
 import 'models/explore_card_model.dart';
 import 'models/explore_card_model.dart';
 

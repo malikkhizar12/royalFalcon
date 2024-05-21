@@ -65,28 +65,15 @@ class MostVisited extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  Image.asset('images/location_icon.png'),
-                                  SizedBox(width: 5.w),
-                                  Text(
-                                    "Dubai Safari park",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25.sp,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              Image.asset('images/location_icon.png'),
+                              SizedBox(width: 5.w),
                               Text(
-                                "Dubai ",
+                                "Sightseeing Tours",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 30.sp,
+                                  fontSize: 25.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -96,7 +83,7 @@ class MostVisited extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                "AED 50",
+                                "AED 2550",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.sp,
@@ -114,6 +101,7 @@ class MostVisited extends StatelessWidget {
                           ),
                         ],
                       ),
+                      SizedBox(height: 10.h,),
                       if (controller.tabController.index != 1)
                       // Hide this row when Gallery tab is selected
                         Row(

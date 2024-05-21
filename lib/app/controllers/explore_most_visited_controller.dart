@@ -27,7 +27,7 @@ class ExploreMostVisitedController extends GetxController with GetSingleTickerPr
     super.onInit();
     tabController = TabController(length: 3, vsync: this);
     tabController.addListener(() {
-      tabBarViewHeight.value = tabController.index == 1 ? 220.h : 123.h;
+      tabBarViewHeight.value = tabController.index == 1 ? 240.h : 123.h;
       mainContainerHeight.value = tabController.index == 1 ? 460.h : 380.h;
     });
   }

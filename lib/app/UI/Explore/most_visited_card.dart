@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../GetAway/models/explore_card_model.dart';
+import 'explore_most_visited.dart';
 
 
 class MostVisitedCard extends StatelessWidget {
@@ -66,7 +68,7 @@ class MostVisitedCard extends StatelessWidget {
                     constraints: BoxConstraints(minWidth: 135),
                     child: ElevatedButton(
                       onPressed: () {
-                        // Get.to(() => ExploreNow());
+                        Get.to(() => MostVisited());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFFBC07),

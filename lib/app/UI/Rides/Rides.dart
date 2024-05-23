@@ -136,6 +136,7 @@ class Rides extends StatelessWidget {
                             ),
                           ],
                         ),
+
                       ),
                     ],
                   ),

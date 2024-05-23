@@ -48,6 +48,13 @@ class AbuDhabiListModel {
         totalRatings: 4.8,
         totalReviews: 150,
         price: '175 AED',
+      ),AbuDhabiListModel(
+        imageUrl: 'images/car_image.png',
+        name: 'Nissan Altima',
+        starRating: 4.8,
+        totalRatings: 4.8,
+        totalReviews: 150,
+        price: '175 AED',
       ),
     ];
   }

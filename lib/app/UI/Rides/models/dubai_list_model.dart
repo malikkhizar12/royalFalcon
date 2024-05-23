@@ -49,6 +49,30 @@ class DubaiListModel {
         totalReviews: 150,
         price: '200 AED',
       ),
+      DubaiListModel(
+        imageUrl: 'images/car_image.png',
+        name: 'Toyota Previa',
+        starRating: 4.8,
+        totalRatings: 4.8,
+        totalReviews: 150,
+        price: '200 AED',
+      ),
+      DubaiListModel(
+        imageUrl: 'images/car_image.png',
+        name: 'Toyota Previa',
+        starRating: 4.8,
+        totalRatings: 4.8,
+        totalReviews: 150,
+        price: '200 AED',
+      ),
+      DubaiListModel(
+        imageUrl: 'images/car_image.png',
+        name: 'Toyota Previa',
+        starRating: 4.8,
+        totalRatings: 4.8,
+        totalReviews: 150,
+        price: '200 AED',
+      ),
     ];
   }
 }

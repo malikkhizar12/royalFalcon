@@ -58,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
-                      padding: EdgeInsets.symmetric(horizontal: 30.w),
                       height: 49.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

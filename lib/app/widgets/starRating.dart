@@ -8,7 +8,7 @@ class StarRating extends StatelessWidget {
   const StarRating({
     Key? key,
     required this.rating,
-    this.size = 24,
+    this.size = 18,
     this.color = Colors.amber,
   }) : super(key: key);
 

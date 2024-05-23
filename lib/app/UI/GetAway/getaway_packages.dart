@@ -22,7 +22,7 @@ class PackagesCard extends StatelessWidget {
     return Container(
       height: 120,
       child: Card(
-color: const Color(0xFF2D2D2D),
+        color: const Color(0xFF2D2D2D),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -78,7 +78,7 @@ color: const Color(0xFF2D2D2D),
                 children: [
                   const Icon(
                     Icons.favorite_border,
-                    color:Color(0xFFFFBC07),
+                    color: Color(0xFFFFBC07),
                   ),
                   Spacer(),
                   Row(
@@ -93,7 +93,7 @@ color: const Color(0xFF2D2D2D),
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFBC07)
+                          color: Color(0xFFFFBC07),
                         ),
                       ),
                     ],

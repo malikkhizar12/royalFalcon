@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/app/UI/Rides/airport_bookings.dart';
+
+import '../practice/choose_ride.dart';
 
 class BookingType extends StatelessWidget {
   const BookingType({super.key});
@@ -13,7 +17,7 @@ class BookingType extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFF514A3C)),
         borderRadius: BorderRadius.circular(10),
-        color: Color(0xFF22272B)
+        color: const Color(0xFF22272B)
       ),
       child: Column(
         children: [
@@ -26,7 +30,7 @@ class BookingType extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFCF9D2C))
               ),
                 onPressed: (){},
-                child: Text("Normal Booking",
+                child: const Text("Normal Booking",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
@@ -42,8 +46,12 @@ class BookingType extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFC9C9C9))
               ),
-                onPressed: (){},
-                child: Text("Airport Booking",
+                onPressed: (){
+                  Get.to(
+                      ()=> AirportBookings()
+                  );
+                },
+                child: const Text("Airport Booking",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,

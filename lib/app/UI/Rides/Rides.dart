@@ -115,7 +115,7 @@ class Rides extends StatelessWidget {
                                             Text(
                                               'AED 425',
                                               style: TextStyle(
-                                                color: Color(0xFFCF9D2C),
+                                                color: const Color(0xFFCF9D2C),
                                                 fontSize: 16.sp,
                                               ),
                                             ),
@@ -136,7 +136,6 @@ class Rides extends StatelessWidget {
                             ),
                           ],
                         ),
-
                       ),
                     ],
                   ),

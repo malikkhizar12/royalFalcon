@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class appbarcustom extends StatelessWidget {
+class AppbarCustom extends StatelessWidget {
   final String title;
-  const appbarcustom({
+  const AppbarCustom({
 
     super.key,
     required this.title,
@@ -12,7 +12,7 @@ class appbarcustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,13 +33,13 @@ class appbarcustom extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(flex: 3,),
+          const Spacer(flex: 3,),
 
           Text(
             title,
-            style: TextStyle(color: Colors.white, fontSize: 20.sp),
+            style: TextStyle(color: Colors.white, fontSize: 17.sp),
           ),
-          Spacer(flex: 2,),
+          const Spacer(flex: 2,),
           Row(
             children: [
               IconButton(

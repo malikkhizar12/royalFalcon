@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:royal_falcon_limousine/app/UI/Rides/airport_bookings.dart';
+import 'package:royal_falcon_limousine/app/ui/rides/normal_bookings.dart';
 
-import '../practice/choose_ride.dart';
 
 class BookingType extends StatelessWidget {
   const BookingType({super.key});
@@ -13,9 +13,9 @@ class BookingType extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
 
-      padding: EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFF514A3C)),
+        border: Border.all(color:const Color(0xFF514A3C)),
         borderRadius: BorderRadius.circular(10),
         color: const Color(0xFF22272B)
       ),
@@ -27,9 +27,13 @@ class BookingType extends StatelessWidget {
             width: 283.w,
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFCF9D2C))
+                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCF9D2C))
               ),
-                onPressed: (){},
+                onPressed: (){
+                  Get.to(
+                          ()=>const NormalBookings()
+                  );
+                },
                 child: const Text("Normal Booking",
                 style: TextStyle(
                   color: Colors.white,
@@ -44,7 +48,7 @@ class BookingType extends StatelessWidget {
             width: 283.w,
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFC9C9C9))
+                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFC9C9C9))
               ),
                 onPressed: (){
                   Get.to(

@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -64,7 +63,7 @@ class _GetAwayState extends State<GetAway> {
         backgroundColor: const Color(0xFF22272B),
         body: ListView(
           children: [
-            const appbarcustom(
+            const AppbarCustom(
               title: 'Getaway',
             ),
             SizedBox(

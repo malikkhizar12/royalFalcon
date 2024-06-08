@@ -55,7 +55,7 @@ class _ExploreMainState extends State<ExploreMain> {
         backgroundColor: const Color(0xFF22272B),
         body: ListView(
           children: [
-            const appbarcustom(
+            const AppbarCustom(
               title: 'Explore',
             ),
             const SizedBox(

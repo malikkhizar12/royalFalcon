@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:royal_falcon_limousine/app/UI/Rides/ride_card_abudhabi.dart';
 import 'package:royal_falcon_limousine/app/UI/Rides/ride_card_dubai.dart';
 import '../../controllers/airport_animation_controller.dart';
+import '../../utils/colors.dart';
 import '../../widgets/appbarcustom.dart';
 import 'location_buttons.dart';
 import 'models/abudhabi_list_model.dart';
@@ -38,10 +39,10 @@ class _AirportBookingsState extends State<AirportBookings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF22272B),
+      backgroundColor:  backgroundColor,
       body: Column(
         children: [
-          const appbarcustom(title: 'Choose your ride'),
+          const AppbarCustom(title: 'Choose your ride'),
           const SizedBox(height: 16),
           FractionallySizedBox(
             widthFactor: 0.75,

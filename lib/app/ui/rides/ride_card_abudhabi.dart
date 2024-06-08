@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../widgets/starRating.dart';
 import 'models/abudhabi_list_model.dart';
 

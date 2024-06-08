@@ -18,7 +18,7 @@ class LocationButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.yellow : Colors.grey[800],
+          color: isSelected ? const Color(0xFFFFBC07) : Colors.grey[800],
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

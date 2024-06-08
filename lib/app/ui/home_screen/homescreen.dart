@@ -69,7 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {
                                   // Handle notifications button press
                                 },
-                                icon: Image.asset('images/notificaton_icon.png'),
+                                icon:
+                                    Image.asset('images/notificaton_icon.png'),
                               ),
                               IconButton(
                                 onPressed: () {
@@ -157,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       imagePath: 'images/passport_pro.png',
                                     ),
                                   ),
-                                   Expanded(
+                                  Expanded(
                                     child: HomeScreenCategories(
                                       categoryTitle: 'Invest in',
                                       imagePath: 'images/invest.png',
@@ -166,24 +167,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                               SizedBox(height: 20.h),
-                              Row(
+                              const Row(
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     child: HomeScreenCategories(
                                       categoryTitle: 'Partner up',
                                       imagePath: 'images/partner.png',
                                     ),
                                   ),
-                                  const Expanded(
+                                  Expanded(
                                     child: HomeScreenCategories(
                                       categoryTitle: 'More services',
                                       imagePath: 'images/more_services.png',
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 77.w,
-                                    height: 67.h,
-                                  ),
+                                  Spacer(),
                                 ],
                               ),
                             ],

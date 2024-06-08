@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../controllers/explore_most_visited_controller.dart';
+import '../../controllers/explore_now_controller.dart';
 import '../../widgets/appbarcustom.dart';
 import '../../widgets/tab_bar.dart';
 
 
-class MostVisited extends StatelessWidget {
-  const MostVisited({super.key});
+class ExploreNow extends StatelessWidget {
+  const ExploreNow({super.key});
 
   @override
   Widget build(BuildContext context) {
     print("widget is buiding again");
-    final ExploreMostVisitedController controller = Get.put(ExploreMostVisitedController());
+    final ExploreNowController controller = Get.put(ExploreNowController());
 
     double appBarHeight = 60.h; // Assuming app bar height
     double tabBarHeight = 50.h; // Assuming tab bar height
@@ -32,17 +32,14 @@ class MostVisited extends StatelessWidget {
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              decoration:  BoxDecoration(
-                image: const DecorationImage(
-                  image:  AssetImage('images/most_visited.jpg'),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/Explore_now.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
-              foregroundDecoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.66), // Adjust opacity here (0.5 for 50% opacity)
-              ),
             ),
-            const appbarcustom(
+            const AppbarCustom(
               title: 'Explore Now',
             ),
             Positioned(
@@ -65,15 +62,28 @@ class MostVisited extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Row(
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset('images/location_icon.png'),
-                              SizedBox(width: 5.w),
+                              Row(
+                                children: [
+                                  Image.asset('images/location_icon.png'),
+                                  SizedBox(width: 5.w),
+                                  Text(
+                                    "Dubai Safari park",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                               Text(
-                                "Sightseeing Tours",
+                                "Dubai ",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 25.sp,
+                                  fontSize: 30.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -83,7 +93,7 @@ class MostVisited extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                "AED 2550",
+                                "AED 50",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20.sp,
@@ -101,9 +111,8 @@ class MostVisited extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10.h,),
                       if (controller.tabController.index != 1)
-                      // Hide this row when Gallery tab is selected
+                        // Hide this row when Gallery tab is selected
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -179,7 +188,7 @@ class MostVisited extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Book Now',
+                          'Next',
                           style: TextStyle(
                               fontSize: 18.sp,
                               color: Colors.white,

@@ -12,6 +12,7 @@ class BookingType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width*0.85,
 
       padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
       decoration: BoxDecoration(
@@ -25,6 +26,7 @@ class BookingType extends StatelessWidget {
           SizedBox(height: 20.h,),
           SizedBox(
             width: 283.w,
+
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFFCF9D2C))

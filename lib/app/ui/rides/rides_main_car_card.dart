@@ -23,32 +23,36 @@ class RidesMainCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140.h,
+      width: 0.45.sw, // Adjusted for two columns in a row
+      margin: EdgeInsets.all(8.0.w),
       child: Card(
-        color: const Color(0xFF2D2D2D),
+        color: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
         elevation: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF35383B),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.asset(
                   imageUrl,
-                  width: 100,
-                  height: 100,
+                  width: double.infinity,
+                  height: 100.h,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 10.w),
-              Expanded(
+              Padding(
+                padding: EdgeInsets.all(8.0.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 5.h),
                     Text(
                       name,
                       style: const TextStyle(
@@ -58,7 +62,6 @@ class RidesMainCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5.h),
-                    StarRating(rating: rating),
                     Text(
                       "$baggage Baggages",
                       style: const TextStyle(
@@ -66,7 +69,6 @@ class RidesMainCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 15.h),
                     Text(
                       "$persons Persons",
                       style: const TextStyle(
@@ -75,22 +77,57 @@ class RidesMainCard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
+                    SizedBox(height:6.h),
+                    StarRating(rating: rating),
+                    SizedBox(height: 6.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Starting From",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "$price AED",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    // SizedBox(height: 10.h),
+                    // Center(
+                    //   child: ElevatedButton(
+                    //     onPressed: () {
+                    //       // Add your booking action here
+                    //     },
+                    //     style: ElevatedButton.styleFrom(
+                    //       backgroundColor: const Color(0xFFFFBC07),
+                    //       shape: RoundedRectangleBorder(
+                    //         borderRadius: BorderRadius.circular(20.0),
+                    //       ),
+                    //       padding: EdgeInsets.symmetric(
+                    //         horizontal: 40.w,
+                    //         vertical: 10.h,
+                    //       ),
+                    //     ),
+                    //     child: const Text(
+                    //       'Book Now',
+                    //       style: TextStyle(
+                    //         fontSize: 14,
+                    //         color: Colors.black,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Spacer(),
-                  Text(
-                    "$price AED",
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../utils/api_functions.dart';
 import '../../widgets/custom_end_drawer.dart';
 import '../../widgets/home_screen_categories.dart';
 import '../../widgets/searchbar.dart';
@@ -17,7 +19,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final GetApiFunctions getApiFunctions = GetApiFunctions();
 
+  String? userName;
+  String? userEmail;
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserData();
+  }
+  String capitalizeFirstLetter(String input) {
+    if (input.isEmpty) return input;
+    return input[0].toUpperCase() + input.substring(1);
+  }
+  loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('user_name');
+      userEmail = prefs.getString('user_email');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -57,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      margin: EdgeInsets.only(top: 35.h, bottom: 20.h),
+                      margin: EdgeInsets.only(top: 15.h, bottom: 20.h),
                       height: 49.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,15 +109,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hello Khizar!',
+                          'Hello ${capitalizeFirstLetter(userName ?? "Guest")}',
                           style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
                         ),
+
                         Text(
-                          'taimoor12@gmail.com',
+                          userEmail ?? "Your Email", // Display "Guest" if userName is null
                           style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.normal,

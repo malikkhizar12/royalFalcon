@@ -19,7 +19,7 @@ class _RidesState extends State<Rides> {
   String selectedLocation = 'Dubai';
   final scaffoldkey = GlobalKey<ScaffoldState>();
   final RidesAnimationController getawayAnimationController =
-      Get.put(RidesAnimationController());
+  Get.put(RidesAnimationController());
 
   @override
   void initState() {
@@ -94,31 +94,39 @@ class _RidesState extends State<Rides> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("Choose your Desired car"),
-                            SizedBox(
-                              height: 600, // or any other fixed height
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 10),
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF35383B),
+                      SizedBox(height: 30.h,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            padding:  EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF35383B),
+                            ),
+                            child: Column(
+                              children: [
+                                 Text(
+                                  "Explore More Popular Cars",
+                                  style: TextStyle(color: Colors.white,fontSize: 25.sp),
                                 ),
-                                child: Obx(() {
+                                SizedBox(height: 8.h,),
+                                Obx(() {
                                   final myAnimation = getawayAnimationController
                                       .myAnimation.value;
-                                  return ListView.builder(
-                                    itemCount: 6,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
+                                  return GridView.builder(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      childAspectRatio: 0.75, // Adjust the aspect ratio as needed
+                                      mainAxisSpacing: 8.h,
+                                    ),
+                                    itemCount: 8,
+                                    itemBuilder: (context, index) {
                                       return AnimatedContainer(
-                                        duration: Duration(
-                                            milliseconds: 400 + (index * 250)),
-                                        curve: Curves.easeIn,
+                                        duration: Duration(milliseconds: 400 + (index * 250)),
+                                        curve: Curves.easeInCubic,
                                         transform: Matrix4.translationValues(
                                             myAnimation ? 0 : width, 0, 0),
                                         child: const RidesMainCard(
@@ -133,15 +141,15 @@ class _RidesState extends State<Rides> {
                                     },
                                   );
                                 }),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.22,
+                    top: MediaQuery.of(context).size.height * 0.18,
                     left: 0,
                     right: 0,
                     child: const Center(

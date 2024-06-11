@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:royal_falcon_limousine/app/utils/api_functions.dart';
 
 import '../UI/home_screen/profile.dart';
 
 class CustomEndDrawer extends StatelessWidget {
+  final GetApiFunctions getApiFunctions=GetApiFunctions();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   CustomEndDrawer({
     super.key,
@@ -222,26 +224,17 @@ class CustomEndDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 50.h,),
-            
-            Center(
-              child: Text('Plan your Adventure',
-                style: TextStyle(
-                  fontSize: 22.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-            ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 40.h,),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 40.w),
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:MaterialStateProperty.all<Color?>(Color(0xFFFFBC07))
                 ),
-                  onPressed: (){},
-                  child: Text("Sign Up Now",style: TextStyle(
+                  onPressed: (){
+                  getApiFunctions.logout();
+                  },
+                  child: Text("Logout",style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 15.sp

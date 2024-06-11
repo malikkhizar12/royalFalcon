@@ -1,85 +1,64 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-
-import '../UI/home_screen/homescreen.dart';
+import 'package:royal_falcon_limousine/app/utils/api_functions.dart';
+import 'dart:convert';
+import 'package:royal_falcon_limousine/app/ui/home_screen/homescreen.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;
+  final String loginUrl =
+      'https://royal-falcon-backend.onrender.com/auth/login';
+  final GetApiFunctions getApiFunctions = GetApiFunctions();
 
-  Future<void> login(String phoneNumber) async {
+  void login(String email, String password) async {
     isLoading.value = true;
 
-    // Replace with your API endpoint
-    const String apiUrl = 'https://yourapi.com/login';
-
     try {
-      // final response = await http.post(
-      //   Uri.parse(apiUrl),
-      //   headers: <String, String>{
-      //     'Content-Type': 'application/json; charset=UTF-8',
-      //   },
-      //   body: jsonEncode(<String, String>{
-      //     'phone_number': phoneNumber,
-      //   }),
-      // );
-      Get.to(HomeScreen());
+      var payload = {
+        'email': email,
+        'password': password,
+      };
 
-      // if (response.statusCode == 200) {
-      //   // Handle successful login
-      //   Get.to(HomeScreen());
-      // } else {
-      //   // Handle error
-      //   // Get.snackbar('Error', 'Login failed');
-      //   Get.to(HomeScreen());
-      //
-      // }
+      var response = await http.post(
+        Uri.parse(loginUrl),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode(payload),
+      );
+
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+
+      if (response.statusCode == 201) {
+        var responseData = json.decode(response.body);
+        String token = responseData['token'];
+
+        // Store the token in SharedPreferences
+        bool isTokenSaved = await getApiFunctions.storeToken(token);
+
+        if (isTokenSaved) {
+          print('Token saved successfully: $token');
+
+          // Save user data
+          await getApiFunctions.saveUserData(responseData['user']);
+
+          Get.snackbar('Success', 'Login successful');
+          Get.to(() => const HomeScreen());
+        } else {
+          print('Failed to save token');
+          Get.snackbar('Error', 'Login Failed (token not saved)');
+        }
+      } else {
+        var responseData = json.decode(response.body);
+        Get.snackbar('Error', responseData['message'] ?? 'Login failed');
+      }
     } catch (e) {
-      // Handle error
-      Get.snackbar('Error', 'Something went wrong');
+      print('Error during login: $e');
+      Get.snackbar(
+          'Error', 'An error occurred during login. Please try again later.');
     } finally {
       isLoading.value = false;
     }
   }
 }
-
-
-// class LoginController extends GetxController {
-//   var isLoading = false.obs;
-//
-//   Future<void> login(String phoneNumber) async {
-//     isLoading.value = true;
-//
-//     // Replace with your API endpoint
-//     const String apiUrl = 'https://yourapi.com/login';
-//
-//     try {
-//       final response = await http.post(
-//         Uri.parse(apiUrl),
-//         headers: <String, String>{
-//           'Content-Type': 'application/json; charset=UTF-8',
-//         },
-//         body: jsonEncode(<String, String>{
-//           'phone_number': phoneNumber,
-//         }),
-//       );
-//
-//       if (response.statusCode == 200) {
-//         // Handle successful login
-//         Get.to(HomeScreen());
-//       }
-//
-//         else {
-//         Get.to(HomeScreen());
-//
-//         // Handle error
-//         // Get.snackbar('Error', 'Login failed');
-//       }
-//     } catch (e) {
-//       // Handle error
-//       Get.snackbar('Error', 'Something went wrong');
-//     } finally {
-//       isLoading.value = false;
-//     }
-//   }
-// }
